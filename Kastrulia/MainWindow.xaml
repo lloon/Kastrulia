@@ -1,12 +1,143 @@
-﻿<Window x:Class="Kastrulia.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Kastrulia"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+﻿<Window
+	x:Class="Kastrulia.MainWindow"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:local="clr-namespace:Kastrulia"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	Title="MainWindow"
+	Width="800"
+	Height="450"
+	FontFamily="Century Gothic"
+	mc:Ignorable="d">
+	<Grid>
+		<Button
+			x:Name="refresh_Button"
+			Width="60"
+			Height="20"
+			HorizontalAlignment="Right"
+			VerticalAlignment="Top"
+			Click="refresh_Button_Click"
+			Content="Refresh" />
+		<Label
+			x:Name="meow_Label"
+			Content="Meow"
+			FontSize="192" />
+		<ScrollViewer
+			Margin="0,24,0,0">
+			<ItemsControl
+				x:Name="main_ItemsControl"
+				ItemsSource="{Binding Items}">
+				<ItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<StackPanel />
+					</ItemsPanelTemplate>
+				</ItemsControl.ItemsPanel>
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<Grid Margin="4,4,4,24">
+							<Grid.RowDefinitions>
+								<RowDefinition />
+								<RowDefinition />
+							</Grid.RowDefinitions>
+							<TextBlock
+								Grid.Row="0"
+								HorizontalAlignment="Center"
+								FontSize="16"
+								Text="{Binding Region}" />
+
+							<ItemsControl x:Name="main_ItemsControl" ItemsSource="{Binding Operators}">
+								<ItemsControl.ItemsPanel>
+									<ItemsPanelTemplate>
+										<StackPanel />
+									</ItemsPanelTemplate>
+								</ItemsControl.ItemsPanel>
+								<ItemsControl.ItemTemplate>
+									<DataTemplate>
+										<Grid Margin="0,0,0,12">
+											<Grid.RowDefinitions>
+												<RowDefinition />
+												<RowDefinition />
+												<RowDefinition />
+												<RowDefinition />
+												<RowDefinition />
+												<RowDefinition />
+											</Grid.RowDefinitions>
+											<TextBlock
+												Grid.Row="0"
+												HorizontalAlignment="Left"
+												FontSize="14"
+												Text="{Binding Name}" />
+											<TextBlock
+												Grid.Row="1"
+												Margin="48,0,0,0"
+												HorizontalAlignment="Left"
+												FontSize="12"
+												Text="{Binding Fuel.A95P}" />
+											<TextBlock
+												Grid.Row="2"
+												Margin="48,0,0,0"
+												HorizontalAlignment="Left"
+												FontSize="12"
+												Text="{Binding Fuel.A95}" />
+											<TextBlock
+												Grid.Row="3"
+												Margin="48,0,0,0"
+												HorizontalAlignment="Left"
+												FontSize="12"
+												Text="{Binding Fuel.A92}" />
+											<TextBlock
+												Grid.Row="4"
+												Margin="48,0,0,0"
+												HorizontalAlignment="Left"
+												FontSize="12"
+												Text="{Binding Fuel.DP}" />
+											<TextBlock
+												Grid.Row="5"
+												Margin="48,0,0,0"
+												HorizontalAlignment="Left"
+												FontSize="12"
+												Text="{Binding Fuel.GAS}" />
+
+											<TextBlock
+												Grid.Row="1"
+												Margin="12,0,0,0"
+												HorizontalAlignment="Left"
+												FontSize="12"
+												Text="A95P" />
+											<TextBlock
+												Grid.Row="2"
+												Margin="12,0,0,0"
+												HorizontalAlignment="Left"
+												FontSize="12"
+												Text="A95" />
+											<TextBlock
+												Grid.Row="3"
+												Margin="12,0,0,0"
+												HorizontalAlignment="Left"
+												FontSize="12"
+												Text="A92" />
+											<TextBlock
+												Grid.Row="4"
+												Margin="12,0,0,0"
+												HorizontalAlignment="Left"
+												FontSize="12"
+												Text="DP" />
+											<TextBlock
+												Grid.Row="5"
+												Margin="12,0,0,0"
+												HorizontalAlignment="Left"
+												FontSize="12"
+												Text="GAS" />
+
+										</Grid>
+									</DataTemplate>
+								</ItemsControl.ItemTemplate>
+							</ItemsControl>
+						</Grid>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+		</ScrollViewer>
+	</Grid>
 </Window>
